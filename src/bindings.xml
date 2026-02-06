@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+// Copyright (C) 2026 Sergey Naumov <sergey@naumov.io>
+// SPDX-License-Identifier: 0BSD
+-->
+<typesystem package="CustomPackage">
+
+    <object-type name="CustomTask" />
+
+    <container-type name="std::vector" type="vector" opaque-containers="int:VectorInt">
+        <include file-name="vector" location="global"/>
+        <conversion-rule>
+            <native-to-target>
+                <insert-template name="shiboken_conversion_cppsequence_to_pylist"/>
+            </native-to-target>
+            <target-to-native>
+                <add-conversion type="PySequence">
+                    <insert-template name="shiboken_conversion_pyiterable_to_cppsequentialcontainer"/>
+                </add-conversion>
+            </target-to-native>
+        </conversion-rule>
+    </container-type>
+
+</typesystem>
