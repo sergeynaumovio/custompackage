@@ -6,6 +6,14 @@ cmake_policy(VERSION 3.18)
 
 project(CustomPackage LANGUAGES CXX)
 
+if(MSVC)
+    cmake_policy(SET CMP0092 NEW) # Disable passing /W3 by default on MSVC
+    add_compile_options(/W4 /WX)
+    add_compile_options(/wd4996) #Disable deprecated warning
+else()
+    add_compile_options(-Wall -Wextra -pedantic -Werror)
+endif()
+
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
