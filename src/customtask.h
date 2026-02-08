@@ -5,14 +5,13 @@
 #define CUSTOMTASK_H
 
 #include "custompackageglobal.h"
-#include <memory>
 #include <vector>
 
 class CustomTaskPrivate;
 
 class CUSTOM_PACKAGE_EXPORT CustomTask
 {
-    std::unique_ptr<CustomTaskPrivate> d_ptr;
+    CustomTaskPrivate *const d_ptr;
 
 public:
     CustomTask();

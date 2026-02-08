@@ -19,6 +19,7 @@ CustomTask::CustomTask() : d_ptr(new CustomTaskPrivate)
 
 CustomTask::~CustomTask()
 {
+    delete d_ptr;
 }
 
 int CustomTask::vectorSum(const std::vector<int> &vector)
