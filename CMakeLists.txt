@@ -117,10 +117,12 @@ shiboken_generator_create_binding(
     FORCE_LIMITED_API
 )
 
+cmake_path(SET Python_SITELIBDIR NORMALIZE ${Python_SITELIB})
+
 install(TARGETS ${CUSTOM_PACKAGE_BINDINGS_LIBRARY}
-    RUNTIME DESTINATION ${Python_SITELIB}
+    RUNTIME DESTINATION ${Python_SITELIBDIR}
             COMPONENT CustomPackage_Runtime
-    LIBRARY DESTINATION ${Python_SITELIB}
+    LIBRARY DESTINATION ${Python_SITELIBDIR}
             COMPONENT CustomPackage_Runtime
             NAMELINK_COMPONENT CustomPackage_Development
 )
